@@ -89,6 +89,11 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
@@ -99,6 +104,7 @@
       line-height: 1.62;
       letter-spacing: -0.008em;
       overflow-x: hidden;
+      max-width: 100%;
     }
 
     /* iOS 27 Translucent Glass Header */
@@ -503,11 +509,16 @@
     }
 
     .meta-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
       background: var(--surface-alt);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
+      padding: 12px 14px;
       font-size: 0.85rem;
-      margin-top: 8px;
+      margin-top: 10px;
       color: var(--text-muted);
     }
 
@@ -627,11 +638,14 @@
       gap: 10px;
       align-items: center;
       margin-bottom: 18px;
+      max-width: 100%;
     }
 
     select.select-input {
       min-height: 42px;
-      padding: 9px 14px;
+      max-width: 100%;
+      min-width: 0;
+      padding: 8px 12px;
       border: 1px solid var(--border);
       border-radius: 999px;
       font-size: 0.9rem;
@@ -639,7 +653,23 @@
       background: var(--surface-alt);
       color: var(--text);
       outline: none;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
       transition: border-color 0.2s ease;
+    }
+
+    .quiz-controls select.select-input {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
+    @media (min-width: 640px) {
+      .quiz-controls select.select-input {
+        flex: 0 1 auto;
+        width: auto;
+        max-width: 420px;
+      }
     }
 
     select.select-input:focus {
@@ -837,12 +867,13 @@
     .ai-input-row {
       display: flex;
       flex-direction: row;
-      align-items: flex-end;
-      gap: 8px;
+      align-items: center;
+      gap: 10px;
       background: var(--surface-alt);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 6px 6px 6px 14px;
+      border-radius: 26px;
+      min-height: 50px;
+      padding: 5px 6px 5px 16px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -853,24 +884,43 @@
 
     .ai-input-row textarea {
       flex: 1;
-      padding: 6px 0;
+      min-width: 0;
+      height: 24px;
+      min-height: 24px;
+      max-height: 120px;
+      padding: 0;
+      margin: 0;
       border: none;
       background: transparent;
       color: var(--text);
       font-family: inherit;
-      font-size: 0.94rem;
+      font-size: 0.95rem;
+      line-height: 24px;
       outline: none;
       resize: none;
-      min-height: 32px;
-      max-height: 120px;
+      overflow-y: hidden;
+    }
+
+    .ai-input-row textarea::placeholder {
+      color: var(--text-muted);
+      opacity: 0.85;
     }
 
     .ai-input-row .btn {
-      width: auto;
-      min-width: 42px;
-      height: 42px;
-      padding: 0 14px;
+      width: 38px;
+      min-width: 38px;
+      height: 38px;
+      min-height: 38px;
+      padding: 0;
       border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .ai-input-row .btn {
+        width: auto;
+        padding: 0 16px;
+      }
     }
 
     /* Gemini-style loading & text reveal */
@@ -1050,7 +1100,7 @@
     /* Compact single-line mobile-first PDF toolbar */
     .pdf-viewer-toolbar {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 6px;
       align-items: center;
       background: var(--surface-elevated);
@@ -1058,25 +1108,56 @@
       -webkit-backdrop-filter: var(--blur);
       border: 1px solid var(--glass-border);
       border-radius: 999px;
-      padding: 6px 10px;
+      padding: 5px 6px;
       margin-bottom: 12px;
       box-shadow: var(--shadow);
+      max-width: 100%;
     }
 
-    .pdf-viewer-toolbar .btn,
-    .pdf-viewer-toolbar .select-input {
-      padding: 5px 10px !important;
-      font-size: 0.8rem !important;
+    .pdf-viewer-toolbar .btn {
+      width: 34px;
+      min-width: 34px;
+      height: 34px;
       min-height: 34px !important;
+      padding: 0 !important;
+      font-size: 0.8rem !important;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    .pdf-viewer-toolbar .select-input {
+      height: 34px;
+      min-height: 34px !important;
+      padding: 0 8px !important;
+      font-size: 0.78rem !important;
+      font-weight: 600;
+      width: auto;
+      flex: 0 0 auto;
     }
 
     .pdf-viewer-toolbar .search-input {
-      flex: 1;
-      min-width: 110px;
-      width: auto;
-      padding: 5px 12px !important;
-      font-size: 0.82rem !important;
+      flex: 1 1 60px;
+      min-width: 60px;
+      width: 100%;
+      height: 34px;
       min-height: 34px !important;
+      padding: 0 10px !important;
+      font-size: 0.8rem !important;
+    }
+
+    @media (min-width: 640px) {
+      .pdf-viewer-toolbar .btn {
+        width: auto;
+        padding: 0 12px !important;
+      }
+      .pdf-viewer-toolbar .select-input {
+        padding: 0 12px !important;
+        font-size: 0.84rem !important;
+      }
+      .pdf-viewer-toolbar .search-input {
+        font-size: 0.85rem !important;
+        padding: 0 14px !important;
+      }
     }
 
     .pdf-page-card {
@@ -1178,13 +1259,16 @@
     .doc-ref {
       color: var(--primary);
       background: var(--primary-light);
+      border: 1px solid rgba(225, 29, 72, 0.2);
       text-decoration: none;
       font-weight: 600;
       cursor: pointer;
       border-radius: 999px;
-      padding: 2px 9px;
-      font-size: 0.82rem;
-      display: inline-block;
+      padding: 4px 11px;
+      line-height: 1.3;
+      font-size: 0.81rem;
+      display: inline-flex;
+      align-items: center;
       transition: all 0.2s var(--spring);
     }
 
@@ -1722,8 +1806,8 @@
 
         <div class="ai-input-row">
           <textarea id="ai-input" rows="1"
-            placeholder="Запитайте про документи, оцінку клієнта, ПДЕСА, скарги чи тести..."></textarea>
-          <button class="btn" id="ai-send" title="Надіслати">⬆️<span class="btn-label"> Надіслати</span></button>
+            placeholder="Запитайте про СЕСМ чи документи..."></textarea>
+          <button class="btn" id="ai-send" title="Надіслати"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg><span class="btn-label"> Надіслати</span></button>
         </div>
       </div>
     </section>
@@ -1816,11 +1900,6 @@
 - Поширюється на проєкти НУР (Світовий банк, KfW, інші МФО) та проєкти за власні кошти Банку.
 - Перегляд СЕСМ: щонайменше 1 раз на рік.
 - 4 категорії ESG-ризику: Високий, Суттєвий, Помірний, Низький.
-- Кроки ESG-оцінки:
-  * Крок 1: Заявка підприємства.
-  * Крок 2a: Перевірка за Списками виключень (НУР — Дод. 1.1; Банк — Дод. 1.2). Якщо є у списку — неприйнятно, далі не оцінюється.
-  * Крок 2b: Заповнення Форми ESDD (Додаток 2). Всі заявки переглядаються фахівцем у головному офісі. Для Низького/Помірного/Суттєвого ризику оцінку робить внутрішня команда (за потреби — незалежний техконсультант). Для Високого ризику Банк ЗОБОВ'ЯЗАНИЙ залучити сторонню незалежну кваліфіковану компанію.
-  * Крок 2c: Документування за категоріями (Таблиця 1):
     - Низький: Форма ESDD + Декларація (Частина B) в договорі. Подальша оцінка не потрібна.
     - Помірний: Форма ESDD + ПДЕСА (Частина D). Вимоги та ПДЕСА включаються до Угоди.
     - Суттєвий або Високий: Звіт за результатами ESDD + ПДЕСА (+ ТЗ та контракт зовнішнього консультанта за Додатком 6). ПДЕСА включається до Угоди. Додатково можуть вимагатися інструменти (Таблиця 2): ESIA, SIA, ESMP, ПЗЗС (План залучення зацікавлених сторін), ПП (План переселення), ПУ (якість повітря, біорізноманіття, трудові ресурси, небезпечні матеріали, шум/вібрації).
@@ -3059,23 +3138,23 @@
       const pagesToRender = showAll ? pages : [pages[currentIdx]];
 
       const pageOptions = pages.map(p =>
-        `<option value="${p.page}" ${p.page === activePage ? "selected" : ""}>Стор. ${p.page} з ${pages.length}</option>`
+        `<option value="${p.page}" ${p.page === activePage ? "selected" : ""}>Стор. ${p.page}/${pages.length}</option>`
       ).join("");
 
       const safeQueryAttr = (query || "").replace(/"/g, "&quot;");
       modalBody.innerHTML = `
     <div class="pdf-viewer-toolbar">
       <button class="btn secondary" id="pdf-prev-btn" type="button" title="Попередня сторінка" ${currentIdx <= 0 || showAll ? "disabled" : ""}>◀<span class="btn-label"> Попередня</span></button>
-      <select id="pdf-page-select" class="select-input" style="min-height:38px; padding:6px 10px;">${pageOptions}</select>
+      <select id="pdf-page-select" class="select-input">${pageOptions}</select>
       <button class="btn secondary" id="pdf-next-btn" type="button" title="Наступна сторінка" ${currentIdx >= pages.length - 1 || showAll ? "disabled" : ""}><span class="btn-label">Наступна </span>▶</button>
-      <input type="text" id="pdf-modal-search" class="search-input" style="min-width:170px; min-height:38px; padding:6px 10px; font-size:0.88rem;" value="${safeQueryAttr}" placeholder="Підсвітити маркером..." />
-      <button class="btn secondary" id="pdf-toggle-all" type="button" title="Перемкнути режим сторінок">${showAll ? "📄<span class=\"btn-label\"> Лише 1 сторінка</span>" : "📑<span class=\"btn-label\"> Усі сторінки</span>"}</button>
+      <input type="text" id="pdf-modal-search" class="search-input" value="${safeQueryAttr}" placeholder="🔍 Пошук..." />
+      <button class="btn secondary" id="pdf-toggle-all" type="button" title="Перемкнути режим сторінок">${showAll ? "📄<span class=\"btn-label\"> 1 стор.</span>" : "📑<span class=\"btn-label\"> Усі</span>"}</button>
     </div>
     <div id="pdf-pages-container">
       ${pagesToRender.map(p => `
         <div class="pdf-page-card" id="pdf-page-${p.page}">
           <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-bottom:8px;">
-            <span class="pdf-page-badge" style="margin-bottom:0;">${p.docName} • Сторінка ${p.page} з ${pages.length}</span>
+            <span class="pdf-page-badge" style="margin-bottom:0;">📄 ${p.docName} • Стор. ${p.page} з ${pages.length}</span>
             ${aiTopicContext && !showAll ? `<span id="pdf-ai-status" style="font-size:0.76rem; color:var(--primary); font-weight:600;">✨ ШІ підбирає точні речення...</span>` : ""}
           </div>
           <div class="pdf-page-content">${formatPdfPageHtml(p.text, aiTopicContext ? "" : query)}</div>
@@ -3184,12 +3263,26 @@
     // ================= PLAYBOOKS RENDER & SEARCH =================
     let activeTag = "Усі";
     const allTags = ["Усі", ...new Set(PLAYBOOKS.flatMap(p => p.tags))];
+    const tagEmojis = {
+      "Усі": "✨",
+      "Скринінг": "🔍",
+      "Оцінка ESDD": "📊",
+      "Кредитний комітет": "🏦",
+      "Моніторинг": "📡",
+      "ПДЕСА": "📋",
+      "Інциденти": "🚨",
+      "Звітність": "📈",
+      "Скарги МРВС": "💬",
+      "Зміни": "🔄",
+      "Воєнні ризики": "⚠️"
+    };
 
     function renderTags() {
       const wrap = document.getElementById("playbook-tags");
-      wrap.innerHTML = allTags.map(tag =>
-        `<button class="tag-btn ${tag === activeTag ? "active" : ""}" data-tag="${tag}">${tag}</button>`
-      ).join("");
+      wrap.innerHTML = allTags.map(tag => {
+        const icon = tagEmojis[tag] ? `${tagEmojis[tag]} ` : "";
+        return `<button class="tag-btn ${tag === activeTag ? "active" : ""}" data-tag="${tag}">${icon}${tag}</button>`;
+      }).join("");
 
       wrap.querySelectorAll(".tag-btn").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -3341,90 +3434,6 @@
         localStorage.setItem(STORAGE_KEY_QUIZ, label);
         updateQuizHistory();
 
-        // ================= DOCUMENTS LIBRARY TAB =================
-        let activeDocSrc = "Усі";
-        document.querySelectorAll("#doc-filter-tags .tag-btn").forEach(btn => {
-          btn.addEventListener("click", () => {
-            document.querySelectorAll("#doc-filter-tags .tag-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            activeDocSrc = btn.dataset.docsrc;
-            renderDocsLibrary();
-          });
-        });
-
-        document.getElementById("doc-search").addEventListener("input", renderDocsLibrary);
-        document.getElementById("clear-doc-search").addEventListener("click", () => {
-          document.getElementById("doc-search").value = "";
-          activeDocSrc = "Усі";
-          document.querySelectorAll("#doc-filter-tags .tag-btn").forEach(b => {
-            b.classList.toggle("active", b.dataset.docsrc === "Усі");
-          });
-          renderDocsLibrary();
-        });
-
-        function renderDocsLibrary() {
-          const q = document.getElementById("doc-search").value.trim().toLowerCase();
-          const grid = document.getElementById("docs-grid");
-          const fullMatchesEl = document.getElementById("full-pdf-matches");
-          const entries = Object.entries(DOC_SECTIONS).filter(([, doc]) => {
-            const matchSrc = activeDocSrc === "Усі" || doc.source === activeDocSrc;
-            const plain = (doc.title + " " + doc.body.replace(/<[^>]+>/g, " ")).toLowerCase();
-            return matchSrc && (!q || plain.includes(q));
-          });
-
-          if (entries.length === 0) {
-            grid.innerHTML = `<div class="card empty-state" style="grid-column:1/-1;">У структурованому довіднику не знайдено збігів за запитом «${q}».</div>`;
-          } else {
-            grid.innerHTML = entries.map(([key, doc]) => {
-              const preview = doc.body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 170) + "…";
-              return `
-        <div class="card" style="cursor:pointer; margin-bottom:0;" onclick="openDocModal('${key}')">
-          <span class="doc-source-badge">${doc.source}</span>
-          <h3 style="margin:0 0 8px; font-size:1rem; color:var(--primary);">${doc.title}</h3>
-          <p style="margin:0; font-size:0.86rem; color:var(--text-muted);">${preview}</p>
-        </div>
-      `;
-            }).join("");
-          }
-
-          if (fullMatchesEl) {
-            if (q.length < 2 || !Array.isArray(FULL_PDF_PAGES)) {
-              fullMatchesEl.innerHTML = "";
-            } else {
-              const srcMap = { "Політика ESG": "policy", "СЕСМ": "sesm", "Додатки до СЕСМ": "appendices" };
-              const targetDocId = srcMap[activeDocSrc] || "";
-              const pageHits = FULL_PDF_PAGES.filter(p =>
-                (!targetDocId || p.docId === targetDocId) &&
-                (p.text || "").toLowerCase().includes(q)
-              ).slice(0, 12);
-
-              if (!pageHits.length) {
-                fullMatchesEl.innerHTML = "";
-              } else {
-                fullMatchesEl.innerHTML = `
-          <div style="grid-column:1/-1; font-weight:700; color:var(--primary); margin-top:6px;">
-            Збіги у повному тексті PDF (${pageHits.length}${pageHits.length === 12 ? "+" : ""} стор.):
-          </div>
-          ${pageHits.map(p => {
-                  const idx = p.text.toLowerCase().indexOf(q);
-                  const start = Math.max(0, idx - 70);
-                  const snippet = (start > 0 ? "…" : "") + p.text.slice(start, idx + q.length + 110) + "…";
-                  const safeQ = q.replace(/'/g, "\\'");
-                  return `
-              <div class="card" style="cursor:pointer; margin-bottom:0;" onclick="openFullPdfViewer('${p.docId}', '${safeQ}', ${p.page})">
-                <span class="doc-source-badge">${p.docName} • Стор. ${p.page}</span>
-                <p style="margin:0; font-size:0.85rem; color:var(--text);">${highlightPdfText(snippet, q)}</p>
-              </div>
-            `;
-                }).join("")}
-        `;
-              }
-            }
-          }
-        }
-
-        renderDocsLibrary();
-
         let verdict = pct >= 85
           ? "Відмінний результат! Ви впевнено орієнтуєтеся у СЕСМ АТ «Полтава-банк»."
           : pct >= 60
@@ -3432,11 +3441,11 @@
             : "Рекомендуємо пройти План навчання та ще раз опрацювати План дій.";
 
         area.innerHTML = `
-      <div style="padding:16px; background:var(--surface-alt); border-radius:8px; border:1px solid var(--border);">
-        <h3 style="margin-top:0;">Тест завершено!</h3>
+      <div style="padding:18px; background:var(--surface-alt); border-radius:var(--radius-sm); border:1px solid var(--border);">
+        <h3 style="margin-top:0;">🎉 Тест завершено!</h3>
         <p style="font-size:1.2rem; font-weight:700; color:var(--primary);">Результат: ${label}</p>
         <p>${verdict}</p>
-        <button class="btn" onclick="document.getElementById('start-quiz').click()">Пройти ще раз</button>
+        <button class="btn" onclick="document.getElementById('start-quiz').click()">🔄 Пройти ще раз</button>
       </div>
     `;
         return;
@@ -3490,12 +3499,12 @@
       <div><strong>${isRight ? "✅ Правильно!" : "❌ Неправильно."}</strong> ${item.exp}</div>
       ${pdfMatch ? `
         <div class="ai-pdf-actions" style="margin-top:10px; padding-top:10px;">
-          <button class="pdf-jump-btn" id="quiz-open-pdf" type="button">📄 Перегляд у PDF: ${pdfMatch.docName} (стор. ${pdfMatch.page})</button>
+          <button class="pdf-jump-btn" id="quiz-open-pdf" type="button">📄 <span class="btn-label">Перегляд у PDF: </span>${pdfMatch.docName} (стор. ${pdfMatch.page})</button>
         </div>
       ` : ""}
     </div>
     <div style="margin-top:14px;">
-      <button class="btn" id="next-q">${currentIdx + 1 < currentQuiz.length ? "Наступне питання →" : "Завершити тест"}</button>
+      <button class="btn" id="next-q">${currentIdx + 1 < currentQuiz.length ? "Наступне ➔" : "🏁 Завершити тест"}</button>
     </div>
   `;
 
@@ -3807,6 +3816,11 @@
       });
     });
 
+    aiInput.addEventListener("input", () => {
+      aiInput.style.height = "24px";
+      aiInput.style.height = Math.min(aiInput.scrollHeight, 120) + "px";
+    });
+
     aiInput.addEventListener("keydown", e => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
@@ -3846,6 +3860,7 @@ ${playbooksSummary}`;
 
       appendAiMessage("user", text);
       aiInput.value = "";
+      aiInput.style.height = "24px";
       aiHistory.push({ role: "user", content: text });
 
       const loadingEl = createGeminiLoadingCard();
