@@ -7,72 +7,115 @@
   <title>ESG Асистент — АТ «Полтава-банк»</title>
   <style>
     :root {
-      --bg: #f6f4f5;
-      --surface: #ffffff;
-      --surface-alt: #fdf8f8;
-      --text: #1e293b;
+      /* iOS 27 Liquid Glass — Light Mode */
+      --bg: #f2f4f8;
+      --bg-mesh:
+        radial-gradient(at 12% 8%, rgba(225, 29, 72, 0.09) 0px, transparent 48%),
+        radial-gradient(at 88% 14%, rgba(251, 146, 60, 0.08) 0px, transparent 45%),
+        radial-gradient(at 50% 90%, rgba(99, 102, 241, 0.06) 0px, transparent 55%);
+      --surface: rgba(255, 255, 255, 0.74);
+      --surface-solid: #ffffff;
+      --surface-alt: rgba(248, 250, 252, 0.68);
+      --surface-elevated: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.75);
+      --border: rgba(15, 23, 42, 0.08);
+      --divider: rgba(15, 23, 42, 0.06);
+      --text: #0f172a;
       --text-muted: #64748b;
-      --border: #e5dde0;
-      --primary: #c62828;
-      --primary-light: #ffebee;
-      --primary-hover: #9e1c1c;
-      --accent: #b71c1c;
-      --accent-light: #ffcdd2;
+      --primary: #e11d48;
+      --primary-light: rgba(225, 29, 72, 0.1);
+      --primary-hover: #be123c;
+      --accent: #f43f5e;
+      --accent-light: rgba(244, 63, 94, 0.12);
       --warn: #d97706;
-      --warn-light: #fef3c7;
-      --danger: #dc2626;
-      --danger-light: #fee2e2;
-      --success: #16a34a;
-      --success-light: #dcfce7;
-      --radius: 10px;
-      --shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+      --warn-light: rgba(245, 158, 11, 0.12);
+      --danger: #e11d48;
+      --danger-light: rgba(225, 29, 72, 0.12);
+      --success: #10b981;
+      --success-light: rgba(16, 185, 129, 0.14);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --shadow:
+        0 10px 34px -10px rgba(15, 23, 42, 0.07),
+        0 2px 8px rgba(15, 23, 42, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      --shadow-hover:
+        0 18px 42px -12px rgba(15, 23, 42, 0.12),
+        0 4px 12px rgba(15, 23, 42, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      --blur: blur(28px) saturate(190%);
+      --spring: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     [data-theme="dark"] {
-      --bg: #0b0d11;
-      --surface: #14171f;
-      --surface-alt: #1b1f2a;
-      --text: #f1f5f9;
+      /* iOS 27 Liquid Glass — Dark Mode */
+      --bg: #07090e;
+      --bg-mesh:
+        radial-gradient(at 15% 6%, rgba(244, 63, 94, 0.16) 0px, transparent 50%),
+        radial-gradient(at 85% 12%, rgba(251, 113, 133, 0.1) 0px, transparent 45%),
+        radial-gradient(at 50% 92%, rgba(56, 189, 248, 0.07) 0px, transparent 55%);
+      --surface: rgba(22, 25, 35, 0.66);
+      --surface-solid: #141822;
+      --surface-alt: rgba(30, 35, 48, 0.52);
+      --surface-elevated: rgba(34, 39, 54, 0.82);
+      --glass-border: rgba(255, 255, 255, 0.11);
+      --border: rgba(255, 255, 255, 0.08);
+      --divider: rgba(255, 255, 255, 0.06);
+      --text: #f8fafc;
       --text-muted: #94a3b8;
-      --border: #2a303f;
-      --primary: #ef4444;
-      --primary-light: rgba(239, 68, 68, 0.16);
-      --primary-hover: #dc2626;
-      --accent: #f87171;
-      --accent-light: rgba(248, 113, 113, 0.16);
-      --warn: #f59e0b;
-      --warn-light: rgba(245, 158, 11, 0.16);
-      --danger: #f87171;
-      --danger-light: rgba(239, 68, 68, 0.18);
-      --success: #4ade80;
-      --success-light: rgba(34, 197, 94, 0.16);
-      --shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+      --primary: #fb7185;
+      --primary-light: rgba(251, 113, 133, 0.15);
+      --primary-hover: #f43f5e;
+      --accent: #fda4af;
+      --accent-light: rgba(253, 164, 175, 0.14);
+      --warn: #fbbf24;
+      --warn-light: rgba(251, 191, 36, 0.15);
+      --danger: #fb7185;
+      --danger-light: rgba(244, 63, 94, 0.16);
+      --success: #34d399;
+      --success-light: rgba(52, 211, 153, 0.15);
+      --shadow:
+        0 14px 40px -12px rgba(0, 0, 0, 0.55),
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      --shadow-hover:
+        0 20px 48px -12px rgba(0, 0, 0, 0.7),
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
     }
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      background-image: var(--bg-mesh);
+      background-attachment: fixed;
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.62;
+      letter-spacing: -0.008em;
+      overflow-x: hidden;
     }
 
+    /* iOS 27 Translucent Glass Header */
     header {
-      background: linear-gradient(135deg, #c62828 0%, #7f1d1d 100%);
+      background: linear-gradient(135deg, rgba(190, 18, 60, 0.88) 0%, rgba(136, 19, 55, 0.84) 100%);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
       color: #fff;
-      padding: 20px 24px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 8px 32px rgba(136, 19, 55, 0.22);
     }
 
     .header-inner {
-      max-width: 1180px;
+      max-width: 1160px;
       margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
@@ -80,105 +123,127 @@
 
     header h1 {
       margin: 0;
-      font-size: 1.45rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
     }
 
     header p {
-      margin: 4px 0 0;
-      font-size: 0.9rem;
-      opacity: 0.9;
+      margin: 2px 0 0;
+      font-size: 0.82rem;
+      font-weight: 500;
+      opacity: 0.92;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
     .theme-toggle {
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.34);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 12px rgba(0, 0, 0, 0.12);
       color: #fff;
-      padding: 5px 12px;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 13px;
       border-radius: 999px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.15s ease;
+      transition: transform 0.25s var(--spring), background 0.2s ease;
     }
 
     .theme-toggle:hover {
       background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
     }
 
-    .badge-offline {
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
+    /* iOS 27 Floating Liquid Glass Tab Bar */
     nav.tabs {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
       position: sticky;
-      top: 0;
-      z-index: 20;
+      top: 10px;
+      z-index: 40;
+      padding: 0 10px;
+      margin: 12px auto 4px;
+      max-width: 1180px;
     }
 
     .tabs-inner {
-      max-width: 1240px;
       margin: 0 auto;
       display: flex;
-      gap: 2px;
-      padding: 0 12px;
+      align-items: center;
+      gap: 4px;
+      padding: 5px;
+      background: var(--surface-elevated);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
+
     .tabs-inner::-webkit-scrollbar {
       display: none;
     }
 
     .tab-btn {
-      background: none;
+      background: transparent;
       border: none;
-      border-bottom: 3px solid transparent;
-      padding: 10px 11px;
-      font-size: 0.84rem;
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.15s ease;
+      transition: all 0.28s var(--spring);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+      background: var(--surface-alt);
+    }
+
+    .tab-btn.active {
+      color: #fff;
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transform: scale(1.01);
     }
 
     @media (min-width: 960px) {
       .tabs-inner {
-        flex-wrap: wrap;
+        justify-content: space-between;
         overflow-x: visible;
-        justify-content: flex-start;
+      }
+      .tab-btn {
+        flex: 1;
+        justify-content: center;
       }
     }
 
-    .tab-btn:hover {
-      color: var(--primary);
-    }
-
-    .tab-btn.active {
-      color: var(--primary);
-      border-bottom-color: var(--primary);
-    }
-
     main {
-      max-width: 1180px;
-      margin: 14px auto;
-      padding: 0 12px calc(36px + env(safe-area-inset-bottom));
+      max-width: 1160px;
+      margin: 16px auto;
+      padding: 0 12px calc(44px + env(safe-area-inset-bottom));
     }
 
     .tab-panel {
@@ -187,52 +252,89 @@
 
     .tab-panel.active {
       display: block;
+      animation: iosPanelSpring 0.38s var(--spring);
     }
 
+    @keyframes iosPanelSpring {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Mobile-first button labels: icon-only on phones, full text on >=640px */
+    .btn-label {
+      display: none;
+    }
+
+    /* Airy iOS 27 Liquid Glass Cards — NO heavy per-card red stripes */
     .card {
       background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-top: 3px solid var(--primary);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius);
-      padding: 15px;
+      padding: 20px;
       box-shadow: var(--shadow);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      transition: transform 0.3s var(--spring), box-shadow 0.3s var(--spring), border-color 0.25s ease;
     }
 
     .card h2,
     .card h3 {
       margin-top: 0;
+      margin-bottom: 10px;
+      letter-spacing: -0.022em;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card h2 {
+      font-size: 1.22rem;
+    }
+
+    .card h3 {
+      font-size: 1.06rem;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 16px;
     }
 
-    /* Search & Filter (Mobile-first) */
+    /* Search & Filter (Mobile-first iOS 27 Capsule Controls) */
     .search-bar {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 14px;
     }
 
     .search-input {
+      flex: 1;
       width: 100%;
       min-height: 44px;
-      padding: 11px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.95rem;
       outline: none;
-      background: var(--surface);
+      background: var(--surface-alt);
       color: var(--text);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s var(--spring);
     }
 
     .search-input:focus {
+      background: var(--surface-elevated);
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.16);
+      box-shadow: 0 0 0 4px var(--primary-light);
     }
 
     .tag-row {
@@ -240,84 +342,113 @@
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       gap: 8px;
       padding-bottom: 4px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+    }
+
+    .tag-row::-webkit-scrollbar {
+      display: none;
     }
 
     .tag-btn {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
+      background: var(--surface-alt);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 8px 14px;
-      min-height: 38px;
-      font-size: 0.85rem;
+      padding: 7px 14px;
+      min-height: 36px;
+      font-size: 0.83rem;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
       white-space: nowrap;
       flex-shrink: 0;
-      transition: all 0.15s;
+      transition: all 0.24s var(--spring);
     }
 
     .tag-btn:hover {
       border-color: var(--primary);
       color: var(--primary);
+      transform: translateY(-1px);
     }
 
     .tag-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+      border-color: transparent;
       color: #fff;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.28);
     }
 
-    /* Playbooks */
+    /* Playbooks — Only headers are highlighted; list items are airy & unboxed */
     .playbook-card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 5px solid var(--primary);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       padding: 18px 20px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       box-shadow: var(--shadow);
+      transition: transform 0.3s var(--spring), box-shadow 0.3s var(--spring);
     }
 
-    .playbook-card.urgent {
-      border-left-color: var(--danger);
+    .playbook-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
     }
 
-    .playbook-card.warn {
-      border-left-color: var(--warn);
-    }
-
-    .playbook-card.accent {
-      border-left-color: var(--accent);
-    }
-
+    /* Highlight ONLY the header of each playbook card */
     .playbook-header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 10px;
       cursor: pointer;
+      padding: 10px 14px;
+      margin: -6px -6px 0;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(90deg, var(--primary-light), transparent 92%);
+      border-left: 3.5px solid var(--primary);
+      transition: background 0.2s ease;
+    }
+
+    .playbook-card.urgent .playbook-header {
+      background: linear-gradient(90deg, var(--danger-light), transparent 92%);
+      border-left-color: var(--danger);
+    }
+
+    .playbook-card.warn .playbook-header {
+      background: linear-gradient(90deg, var(--warn-light), transparent 92%);
+      border-left-color: var(--warn);
+    }
+
+    .playbook-card.accent .playbook-header {
+      background: linear-gradient(90deg, var(--accent-light), transparent 92%);
+      border-left-color: var(--accent);
     }
 
     .playbook-title {
-      font-size: 1.08rem;
+      font-size: 1.04rem;
       font-weight: 700;
+      letter-spacing: -0.015em;
       color: var(--text);
       margin: 0;
     }
 
     .pill {
-      display: inline-block;
-      padding: 3px 10px;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 11px;
       border-radius: 999px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
       background: var(--primary-light);
       color: var(--primary);
+      letter-spacing: 0.01em;
     }
 
     .pill.danger {
@@ -336,84 +467,104 @@
     }
 
     .playbook-body {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1.5px solid var(--border);
+      margin-top: 12px;
+      padding: 4px 6px 0;
+      animation: iosPanelSpring 0.28s var(--spring);
     }
 
     .playbook-body ol,
     .playbook-body ul {
-      margin: 10px 0;
-      padding-left: 0;
-      list-style-position: inside;
+      margin: 4px 0 12px;
+      padding-left: 22px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 0;
     }
 
+    /* Unboxed, airy list rows — no background or border box per line */
     .playbook-body li {
-      margin-bottom: 0;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--primary);
-      border-radius: 8px;
-      padding: 10px 12px;
-      line-height: 1.5;
+      margin: 0;
+      padding: 9px 4px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--divider);
+      border-radius: 0;
+      line-height: 1.62;
+      color: var(--text);
+    }
+
+    .playbook-body li:last-child {
+      border-bottom: none;
+    }
+
+    .playbook-body li::marker {
+      color: var(--primary);
+      font-weight: 700;
     }
 
     .meta-box {
       background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 10px 14px;
-      font-size: 0.88rem;
-      margin-top: 10px;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      color: var(--text-muted);
     }
 
-    /* Learning Plan */
+    /* Learning Plan — Clean iOS Inset Grouped List (not boxed per item) */
     .progress-wrap {
-      background: var(--border);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      height: 12px;
+      height: 10px;
       overflow: hidden;
-      margin: 10px 0 6px;
+      margin: 14px 0 8px;
     }
 
     .progress-bar {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: linear-gradient(90deg, #e11d48, #fb7185);
       height: 100%;
       width: 0%;
-      transition: width 0.25s ease;
+      border-radius: 999px;
+      transition: width 0.45s var(--spring);
     }
 
     .task-item {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 8px;
-      background: var(--surface-alt);
+      gap: 12px;
+      padding: 11px 6px;
+      border: none;
+      border-bottom: 1px solid var(--divider);
+      border-radius: 0;
+      margin-bottom: 0;
+      background: transparent;
       cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s var(--spring);
+    }
+
+    .task-item:last-child {
+      border-bottom: none;
     }
 
     .task-item:hover {
-      background: var(--primary-light);
-      border-color: var(--primary);
+      transform: translateX(3px);
     }
 
     .task-item input[type="checkbox"] {
       margin-top: 4px;
-      width: 17px;
-      height: 17px;
+      width: 19px;
+      height: 19px;
+      border-radius: 6px;
       accent-color: var(--primary);
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .task-item.done span.task-title {
       text-decoration: line-through;
       color: var(--text-muted);
+      opacity: 0.72;
     }
 
     .task-meta {
@@ -422,34 +573,52 @@
       margin-top: 2px;
     }
 
-    /* Quiz */
+    /* iOS 27 Buttons & Controls */
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
-      background: var(--primary);
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
       color: #fff;
       border: none;
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 0.92rem;
+      border-radius: 999px;
+      min-height: 42px;
+      padding: 9px 18px;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.15s;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transition: transform 0.24s var(--spring), box-shadow 0.24s var(--spring), opacity 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .btn:hover {
-      background: var(--primary-hover);
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(225, 29, 72, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
     }
 
     .btn.secondary {
-      background: var(--surface);
+      background: var(--surface-alt);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: var(--text);
       border: 1px solid var(--border);
+      box-shadow: inset 0 1px 0 var(--glass-border);
+      padding: 9px 14px;
     }
 
-    .btn.secondary:hover {
-      background: var(--surface-alt);
+    .btn.secondary:hover:not(:disabled) {
+      background: var(--surface-elevated);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     .quiz-controls {
@@ -457,59 +626,71 @@
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     select.select-input {
-      padding: 10px 12px;
+      min-height: 42px;
+      padding: 9px 14px;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.92rem;
-      background: var(--surface);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: var(--surface-alt);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    select.select-input:focus {
+      border-color: var(--primary);
     }
 
     .option-btn {
       display: block;
       width: 100%;
       text-align: left;
-      padding: 12px 16px;
+      padding: 13px 18px;
       margin-bottom: 10px;
       background: var(--surface-alt);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       font-size: 0.95rem;
+      color: var(--text);
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.24s var(--spring);
     }
 
     .option-btn:hover:not(:disabled) {
       border-color: var(--primary);
       background: var(--primary-light);
+      transform: translateX(3px);
     }
 
     .option-btn.correct {
       background: var(--success-light);
       border-color: var(--success);
-      color: #14532d;
+      color: var(--text);
       font-weight: 600;
     }
 
     .option-btn.wrong {
       background: var(--danger-light);
       border-color: var(--danger);
-      color: #7f1d1d;
+      color: var(--text);
     }
 
     .explanation {
       margin-top: 14px;
-      padding: 14px;
-      border-radius: 8px;
-      background: var(--primary-light);
-      border-left: 4px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
       font-size: 0.92rem;
+      animation: iosPanelSpring 0.3s var(--spring);
     }
 
-    /* Tables */
+    /* Tables — Clean iOS Airy Dividers */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -519,38 +700,47 @@
     th,
     td {
       text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--divider);
       vertical-align: top;
     }
 
+    tr:last-child td {
+      border-bottom: none;
+    }
+
     th {
-      background: var(--surface-alt);
+      background: transparent;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       font-weight: 700;
-      color: var(--text);
+      color: var(--text-muted);
+      border-bottom: 1.5px solid var(--border);
     }
 
     .empty-state {
       text-align: center;
-      padding: 32px;
+      padding: 36px 20px;
       color: var(--text-muted);
     }
 
-    /* AI Chat */
+    /* AI Chat — iOS 27 Messages / Apple Intelligence Style */
     .ai-settings {
       background: var(--surface-alt);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       padding: 14px;
       margin-bottom: 14px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 10px;
+      animation: iosPanelSpring 0.28s var(--spring);
     }
 
     .ai-field label {
       display: block;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 4px;
@@ -558,22 +748,23 @@
 
     .ai-field input {
       width: 100%;
-      padding: 8px 10px;
+      padding: 9px 12px;
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 12px;
       font-size: 0.88rem;
-      background: var(--surface);
+      background: var(--surface-solid);
+      color: var(--text);
     }
 
     .ai-chat-box {
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
       background: var(--surface-alt);
       height: 52vh;
       min-height: 300px;
       max-height: 520px;
       overflow-y: auto;
-      padding: 12px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -581,29 +772,29 @@
     }
 
     .ai-msg {
-      max-width: 94%;
-      padding: 12px 14px;
-      border-radius: 12px;
+      max-width: 92%;
+      padding: 12px 16px;
+      border-radius: 20px;
       font-size: 0.94rem;
-      line-height: 1.55;
+      line-height: 1.6;
       word-wrap: break-word;
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      animation: iosPanelSpring 0.3s var(--spring);
     }
 
     .ai-msg.user {
       align-self: flex-end;
-      background: var(--primary);
+      background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
       color: #fff;
-      border-bottom-right-radius: 3px;
+      border-bottom-right-radius: 6px;
     }
 
     .ai-msg.assistant {
       align-self: flex-start;
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-left: 4px solid var(--primary);
+      background: var(--surface-elevated);
+      border: 1px solid var(--glass-border);
       color: var(--text);
-      border-bottom-left-radius: 3px;
+      border-bottom-left-radius: 6px;
     }
 
     .ai-msg.error {
@@ -611,24 +802,23 @@
       max-width: 100%;
       background: var(--danger-light);
       border: 1px solid var(--danger);
-      color: #7f1d1d;
+      color: var(--danger);
     }
 
+    /* Unboxed lists inside AI messages */
     .ai-msg ul,
     .ai-msg ol {
-      margin: 8px 0;
-      padding-left: 0;
-      list-style-position: inside;
+      margin: 6px 0;
+      padding-left: 20px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .ai-msg li {
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 7px 10px;
+      background: transparent;
+      border: none;
+      padding: 2px 0;
     }
 
     .ai-msg p {
@@ -643,55 +833,44 @@
       margin-bottom: 0;
     }
 
+    /* Mobile-first iOS Messages Composer Row */
     .ai-input-row {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: flex-end;
       gap: 8px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 6px 6px 6px 14px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .ai-input-row .btn {
-      width: 100%;
-      justify-content: center;
-      min-height: 44px;
+    .ai-input-row:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
     }
 
     .ai-input-row textarea {
       flex: 1;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      background: var(--surface);
+      padding: 6px 0;
+      border: none;
+      background: transparent;
       color: var(--text);
-      border-radius: 8px;
       font-family: inherit;
       font-size: 0.94rem;
-      resize: vertical;
-      min-height: 46px;
-      max-height: 140px;
+      outline: none;
+      resize: none;
+      min-height: 32px;
+      max-height: 120px;
     }
 
-    .search-input,
-    select.select-input,
-    .ai-field input {
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    [data-theme="dark"] .ai-msg.error {
-      color: #fecaca;
-    }
-
-    [data-theme="dark"] .ai-notice {
-      color: #fde68a;
-    }
-
-    [data-theme="dark"] .option-btn {
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    [data-theme="dark"] .explanation {
-      background: var(--surface-alt);
-      color: var(--text);
+    .ai-input-row .btn {
+      width: auto;
+      min-width: 42px;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
     }
 
     /* Gemini-style loading & text reveal */
@@ -724,12 +903,10 @@
         transform: scale(0.9) rotate(0deg);
         opacity: 0.7;
       }
-
       50% {
         transform: scale(1.22) rotate(180deg);
         opacity: 1;
       }
-
       100% {
         transform: scale(0.9) rotate(360deg);
         opacity: 0.7;
@@ -737,7 +914,7 @@
     }
 
     .gemini-shimmer-line {
-      height: 11px;
+      height: 10px;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--surface-alt) 25%, var(--primary-light) 50%, var(--surface-alt) 75%);
       background-size: 200% 100%;
@@ -756,23 +933,21 @@
       0% {
         background-position: 200% 0;
       }
-
       100% {
         background-position: -200% 0;
       }
     }
 
     .gemini-reveal-block {
-      animation: geminiFadeSlide 0.35s ease both;
+      animation: geminiFadeSlide 0.35s var(--spring) both;
     }
 
     @keyframes geminiFadeSlide {
       from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(6px);
         filter: blur(2px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -780,14 +955,19 @@
       }
     }
 
-    /* Yellow marker highlight & PDF viewer */
+    /* Paper-like Yellow Highlighter & Airy PDF Viewer */
     mark.pdf-highlight {
-      background: #fde047;
-      color: #111827;
-      padding: 1px 4px;
-      border-radius: 4px;
-      font-weight: 700;
-      box-shadow: 0 0 0 1px #eab308;
+      background: rgba(253, 224, 71, 0.65);
+      color: inherit;
+      padding: 0;
+      border-radius: 2px;
+      box-shadow: none;
+      font-weight: inherit;
+    }
+
+    [data-theme="dark"] mark.pdf-highlight {
+      background: rgba(250, 204, 21, 0.32);
+      color: #fef08a;
     }
 
     .ai-pdf-actions {
@@ -796,7 +976,7 @@
       gap: 8px;
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px dashed var(--border);
+      border-top: 1px solid var(--divider);
     }
 
     .pdf-jump-btn {
@@ -805,25 +985,26 @@
       gap: 6px;
       background: var(--primary-light);
       color: var(--primary);
-      border: 1.5px solid var(--primary);
-      border-radius: 8px;
-      padding: 7px 12px;
-      font-size: 0.84rem;
-      font-weight: 700;
+      border: 1px solid rgba(225, 29, 72, 0.25);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.22s var(--spring);
     }
 
     .pdf-jump-btn:hover {
       background: var(--primary);
       color: #fff;
+      transform: translateY(-1px);
     }
 
     .full-pdf-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
     @media (min-width: 768px) {
@@ -836,88 +1017,101 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 4px;
+      gap: 6px;
       background: var(--surface-alt);
-      border: 1.5px solid var(--border);
-      border-left: 4px solid var(--primary);
-      border-radius: 10px;
-      padding: 12px 14px;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
       text-align: left;
       cursor: pointer;
       color: var(--text);
-      transition: all 0.15s ease;
+      box-shadow: var(--shadow);
+      transition: all 0.28s var(--spring);
     }
 
     .full-pdf-btn:hover {
       border-color: var(--primary);
       background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
     }
 
     .full-pdf-btn strong {
-      font-size: 0.92rem;
-      color: var(--primary);
+      font-size: 0.95rem;
+      color: var(--text);
     }
 
     .full-pdf-btn span {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: var(--primary);
+      font-weight: 600;
     }
 
+    /* Compact single-line mobile-first PDF toolbar */
     .pdf-viewer-toolbar {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       align-items: center;
-      background: var(--surface-alt);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 7px;
-      margin-bottom: 10px;
-      position: static;
+      background: var(--surface-elevated);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
     }
+
     .pdf-viewer-toolbar .btn,
     .pdf-viewer-toolbar .select-input {
-      padding: 5px 9px !important;
-      font-size: 0.78rem !important;
-      min-height: 32px !important;
+      padding: 5px 10px !important;
+      font-size: 0.8rem !important;
+      min-height: 34px !important;
     }
+
     .pdf-viewer-toolbar .search-input {
-      padding: 6px 10px !important;
-      font-size: 0.84rem !important;
+      flex: 1;
+      min-width: 110px;
+      width: auto;
+      padding: 5px 12px !important;
+      font-size: 0.82rem !important;
       min-height: 34px !important;
     }
 
     .pdf-page-card {
       background: var(--surface-alt);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 12px;
+      border-radius: 20px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
     }
 
     .pdf-page-badge {
       display: inline-block;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
       background: var(--primary-light);
       color: var(--primary);
-      padding: 2px 9px;
+      padding: 4px 11px;
       border-radius: 999px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
+    /* Clean Apple Books-like PDF formatting — ONLY headings are highlighted */
     .pdf-page-formatted {
-      font-size: 0.92rem;
-      line-height: 1.65;
+      font-size: 0.93rem;
+      line-height: 1.68;
       color: var(--text);
     }
 
     .pdf-page-formatted .pdf-heading {
-      margin: 14px 0 8px;
-      padding-bottom: 5px;
-      border-bottom: 1.5px solid var(--primary);
-      color: var(--primary);
+      margin: 16px 0 10px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--primary-light), transparent 95%);
+      border-left: 3.5px solid var(--primary);
+      color: var(--text);
       font-size: 0.98rem;
       font-weight: 700;
     }
@@ -926,72 +1120,83 @@
       margin-top: 2px;
     }
 
+    /* Clauses & bullets are airy text rows, NOT boxed */
     .pdf-page-formatted .pdf-clause {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 9px 12px;
-      margin: 7px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--divider);
+      border-radius: 0;
+      padding: 8px 2px;
+      margin: 0;
+    }
+
+    .pdf-page-formatted .pdf-clause:last-child {
+      border-bottom: none;
     }
 
     .pdf-page-formatted .pdf-clause-num {
       color: var(--primary);
       font-weight: 700;
-      margin-right: 4px;
+      margin-right: 6px;
     }
 
     .pdf-page-formatted p.pdf-para {
-      margin: 0 0 9px;
+      margin: 0 0 10px;
     }
 
     .pdf-page-formatted ul.pdf-list {
-      margin: 6px 0 10px;
-      padding-left: 0;
-      list-style: none;
+      margin: 6px 0 12px;
+      padding-left: 20px;
+      list-style: disc;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .pdf-page-formatted ul.pdf-list li {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--primary);
-      border-radius: 6px;
-      padding: 8px 11px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 4px 0;
+    }
+
+    .pdf-page-formatted ul.pdf-list li::marker {
+      color: var(--primary);
     }
 
     .ai-notice {
       background: var(--warn-light);
-      border: 1px solid #f59e0b;
-      color: #78350f;
-      padding: 10px 14px;
-      border-radius: 8px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
       font-size: 0.88rem;
       margin-bottom: 14px;
     }
 
-    /* Clickable Doc Refs & Modal */
+    /* Clickable Doc Refs & iOS 27 Sheet Modal */
     .doc-ref {
       color: var(--primary);
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
+      background: var(--primary-light);
+      text-decoration: none;
       font-weight: 600;
       cursor: pointer;
-      border-radius: 4px;
-      padding: 1px 4px;
-      transition: background 0.15s;
+      border-radius: 999px;
+      padding: 2px 9px;
+      font-size: 0.82rem;
+      display: inline-block;
+      transition: all 0.2s var(--spring);
     }
 
     .doc-ref:hover {
-      background: var(--primary-light);
-      text-decoration-style: solid;
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
     tr.clickable-row {
       cursor: pointer;
-      transition: background 0.12s;
+      transition: background 0.18s ease;
     }
 
     tr.clickable-row:hover {
@@ -1002,12 +1207,13 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.58);
+      background: rgba(7, 9, 14, 0.52);
       z-index: 1000;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      backdrop-filter: blur(2px);
+      padding: 12px;
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
     }
 
     .modal-overlay.open {
@@ -1015,20 +1221,21 @@
     }
 
     .modal-box {
-      background: var(--surface);
-      border-radius: 12px;
-      max-width: 860px;
+      background: var(--surface-solid);
+      border: 1px solid var(--glass-border);
+      border-radius: 26px;
+      max-width: 880px;
       width: 100%;
       max-height: 88vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
       overflow: hidden;
     }
 
     .modal-header {
-      padding: 10px 14px;
-      background: linear-gradient(135deg, #c62828 0%, #7f1d1d 100%);
+      padding: 12px 16px;
+      background: linear-gradient(135deg, rgba(190, 18, 60, 0.92) 0%, rgba(136, 19, 55, 0.9) 100%);
       color: #fff;
       display: flex;
       justify-content: space-between;
@@ -1038,41 +1245,63 @@
 
     .modal-header h3 {
       margin: 0;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
       line-height: 1.3;
     }
 
     .modal-close {
       background: rgba(255, 255, 255, 0.2);
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       color: #fff;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
       font-size: 1.15rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       flex-shrink: 0;
+      transition: transform 0.2s var(--spring), background 0.2s ease;
     }
 
     .modal-close:hover {
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.32);
+      transform: scale(1.06);
     }
 
     .modal-body {
-      padding: 12px;
+      padding: 14px;
       overflow-y: auto;
       font-size: 0.92rem;
-      line-height: 1.55;
+      line-height: 1.62;
     }
 
     .modal-body h4 {
-      margin: 14px 0 6px;
-      color: var(--primary);
+      margin: 14px 0 8px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--primary-light), transparent 95%);
+      border-left: 3px solid var(--primary);
+      color: var(--text);
+    }
+
+    .modal-body ul,
+    .modal-body ol {
+      padding-left: 20px;
+    }
+
+    .modal-body li {
+      padding: 4px 0;
     }
 
     .modal-body table {
       margin: 10px 0;
       border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     .modal-body th,
@@ -1084,37 +1313,61 @@
 
     .doc-source-badge {
       display: inline-block;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      padding: 3px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
       background: var(--primary-light);
       color: var(--primary);
       margin-bottom: 10px;
     }
 
+    /* Tactile iOS 27 Micro-interactions */
+    .btn:active,
+    .tag-btn:active,
+    .theme-toggle:active,
+    .tab-btn:active,
+    .pdf-jump-btn:active,
+    .full-pdf-btn:active {
+      transform: scale(0.95);
+    }
+
+    .modal-overlay.open .modal-box {
+      animation: modalPopIn 0.34s var(--spring);
+    }
+
+    @keyframes modalPopIn {
+      from {
+        opacity: 0;
+        transform: scale(0.94) translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
     /* Mobile-first progressive breakpoints */
     @media (min-width: 640px) {
       header {
-        padding: 20px 24px;
+        padding: 18px 24px;
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
       }
 
       main {
         margin: 22px auto;
-        padding: 0 16px 48px;
+        padding: 0 18px 56px;
       }
 
       .card {
-        padding: 20px;
-      }
-
-      .search-bar {
-        flex-direction: row;
-      }
-
-      .search-input {
-        flex: 1;
-        min-width: 240px;
+        padding: 24px 28px;
       }
 
       .tag-row {
@@ -1124,53 +1377,47 @@
 
       .ai-chat-box {
         height: 460px;
-        padding: 16px;
+        padding: 18px;
       }
 
       .ai-msg {
-        max-width: 85%;
+        max-width: 82%;
       }
 
-      .ai-input-row {
-        flex-direction: row;
-        gap: 10px;
-      }
-
-      .ai-input-row .btn {
-        width: auto;
-        min-width: 128px;
+      .btn-label {
+        display: inline;
       }
 
       .tab-btn {
-        padding: 13px 13px;
-        font-size: 0.9rem;
+        padding: 10px 16px;
+        font-size: 0.88rem;
       }
 
       .modal-header {
-        padding: 16px 20px;
+        padding: 16px 22px;
       }
 
       .modal-header h3 {
-        font-size: 1.08rem;
+        font-size: 1.06rem;
       }
 
       .modal-body {
-        padding: 20px;
+        padding: 22px;
       }
 
       .pdf-viewer-toolbar {
         position: sticky;
         top: 0;
         z-index: 5;
-        padding: 10px;
+        padding: 8px 12px;
         gap: 8px;
       }
     }
 
     @media (min-width: 768px) {
       .grid-2 {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 18px;
       }
     }
   </style>
@@ -1180,31 +1427,31 @@
 
   <header>
     <div class="header-inner">
-      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:12px; min-width:0;">
         <div
-          style="background:#fff; padding:6px 12px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+          style="background:#fff; padding:6px 10px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 12px rgba(0,0,0,0.18);">
           <img src="https://poltavabank.com/wp-content/uploads/2021/05/1.png" alt="АТ «Полтава-банк»"
-            style="height:34px; width:auto; display:block; object-fit:contain;" />
+            style="height:30px; width:auto; display:block; object-fit:contain;" />
         </div>
-        <div>
+        <div style="min-width:0;">
           <h1>ESG Асистент — АТ «Полтава-банк»</h1>
           <p>☀️Зосічкин помічник☀️</p>
         </div>
       </div>
       <div class="header-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button">🌙 Темна тема</button>
+        <button class="theme-toggle" id="theme-toggle" type="button" title="Перемкнути тему">☀️<span class="btn-label"> Світла тема</span></button>
       </div>
     </div>
   </header>
 
   <nav class="tabs">
     <div class="tabs-inner">
-      <button class="tab-btn active" data-tab="playbooks">⚡ План дій (Ситуації)</button>
-      <button class="tab-btn" data-tab="learning">🎓 План навчання</button>
-      <button class="tab-btn" data-tab="quiz">📝 Тестування знань</button>
-      <button class="tab-btn" data-tab="reference">⏱️ Довідник строків і додатків</button>
-      <button class="tab-btn" data-tab="docs">📄 Документи (3 PDF)</button>
-      <button class="tab-btn" data-tab="ai">✨ ШІ-Асистент (Gemini)</button>
+      <button class="tab-btn active" data-tab="playbooks">⚡ <span>Ситуації</span><span class="btn-label"> (План дій)</span></button>
+      <button class="tab-btn" data-tab="learning">🎓 <span>Навчання</span></button>
+      <button class="tab-btn" data-tab="quiz">📝 <span>Тести</span></button>
+      <button class="tab-btn" data-tab="reference">⏱️ <span>Строки</span><span class="btn-label"> і додатки</span></button>
+      <button class="tab-btn" data-tab="docs">📄 <span>PDF</span><span class="btn-label"> (Документи)</span></button>
+      <button class="tab-btn" data-tab="ai">✨ <span>ШІ</span><span class="btn-label">-Асистент</span></button>
     </div>
   </nav>
 
@@ -1212,14 +1459,14 @@
     <!-- TAB 1: PLAYBOOKS -->
     <section id="tab-playbooks" class="tab-panel active">
       <div class="card">
-        <h2>Пошук плану дій за ситуацією або темою</h2>
+        <h2>🧭 Пошук плану дій за ситуацією</h2>
         <div class="search-bar">
           <input type="text" id="playbook-search" class="search-input"
-            placeholder="Наприклад: скарга, інцидент, 24 години, ПДЕСА, війна, НУР, виїзд, високий ризик..." />
-          <button class="btn secondary" id="clear-search">Скинути</button>
+            placeholder="Пошук: скарга, інцидент, 24 год, ПДЕСА, війна, НУР..." />
+          <button class="btn secondary" id="clear-search" title="Скинути пошук">🧹<span class="btn-label"> Скинути</span></button>
         </div>
         <div class="tag-row" id="playbook-tags"></div>
-        <div id="playbook-count" style="font-size: 0.85rem; color: var(--text-muted);"></div>
+        <div id="playbook-count" style="font-size: 0.84rem; color: var(--text-muted);"></div>
       </div>
       <div id="playbook-list"></div>
     </section>
@@ -1227,18 +1474,17 @@
     <!-- TAB 2: LEARNING PLAN -->
     <section id="tab-learning" class="tab-panel">
       <div class="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
           <div>
-            <h2 style="margin-bottom:4px;">Базовий 4-тижневий план навчання (адаптація)</h2>
-            <p style="margin:0; color:var(--text-muted); font-size:0.9rem;">Розрахований на фахівця з профільною освітою
-              без досвіду роботи або після перерви. Прогрес зберігається у браузері.</p>
+            <h2 style="margin-bottom:4px;">🎓 4-тижневий план адаптації</h2>
+            <p style="margin:0; color:var(--text-muted); font-size:0.88rem;">Покрокове освоєння СЕСМ, Політики ESG та додатків. Прогрес зберігається автоматично.</p>
           </div>
-          <button class="btn secondary" id="reset-learning">Скинути прогрес</button>
+          <button class="btn secondary" id="reset-learning" title="Скинути прогрес">🔄<span class="btn-label"> Скинути</span></button>
         </div>
         <div class="progress-wrap">
           <div class="progress-bar" id="learning-progress-bar"></div>
         </div>
-        <div id="learning-progress-text" style="font-size:0.86rem; font-weight:600; color:var(--primary);"></div>
+        <div id="learning-progress-text" style="font-size:0.85rem; font-weight:600; color:var(--primary);"></div>
       </div>
       <div id="learning-modules"></div>
     </section>
@@ -1246,25 +1492,25 @@
     <!-- TAB 3: QUIZ -->
     <section id="tab-quiz" class="tab-panel">
       <div class="card">
-        <h2>Тренажер знань СЕСМ та ESG</h2>
+        <h2>📝 Тренажер знань СЕСМ та ESG</h2>
         <div class="quiz-controls">
           <select id="quiz-topic" class="select-input">
-            <option value="all">Усі теми (випадкові питання)</option>
-            <option value="СЕСМ та виключення">СЕСМ, Політика та Списки виключень</option>
-            <option value="Оцінка ESDD">Оцінка ESDD та класифікація ризиків</option>
-            <option value="ПДЕСА та моніторинг">ПДЕСА, моніторинг та зміни</option>
-            <option value="Скарги та інциденти">Скарги (МРВС) та інциденти</option>
-            <option value="Законодавство та війна">Законодавство, ОПБЖ та воєнні ризики</option>
-            <option value="Екологічні дозволи та ОВД">Екологічні дозволи, ОВД та відходи</option>
-            <option value="Соціальні питання та праця">Соціальні питання, охорона праці та ГЗН</option>
-            <option value="Галузеві ризики клієнтів">Галузеві ризики клієнтів (Агро, СТО, Будівництво)</option>
-            <option value="Робота в банку">Робота в банку, виїзди та звітність</option>
+            <option value="all">🎲 Усі теми (випадкові питання)</option>
+            <option value="СЕСМ та виключення">🚫 СЕСМ, Політика та Списки виключень</option>
+            <option value="Оцінка ESDD">📊 Оцінка ESDD та класифікація ризиків</option>
+            <option value="ПДЕСА та моніторинг">📋 ПДЕСА, моніторинг та зміни</option>
+            <option value="Скарги та інциденти">🚨 Скарги (МРВС) та інциденти</option>
+            <option value="Законодавство та війна">⚠️ Законодавство, ОПБЖ та воєнні ризики</option>
+            <option value="Екологічні дозволи та ОВД">🌿 Екологічні дозволи, ОВД та відходи</option>
+            <option value="Соціальні питання та праця">👷 Соціальні питання, охорона праці та ГЗН</option>
+            <option value="Галузеві ризики клієнтів">🏭 Галузеві ризики клієнтів (Агро, СТО, Будівництво)</option>
+            <option value="Робота в банку">🏦 Робота в банку, виїзди та звітність</option>
           </select>
-          <button class="btn" id="start-quiz">Почати тест</button>
-          <span id="quiz-history" style="font-size:0.86rem; color:var(--text-muted);"></span>
+          <button class="btn" id="start-quiz">🚀 <span>Старт</span><span class="btn-label"> тесту</span></button>
+          <span id="quiz-history" style="font-size:0.85rem; color:var(--text-muted);"></span>
         </div>
         <div id="quiz-area">
-          <p style="color:var(--text-muted); margin:0;">Оберіть тему та натисніть <strong>«Почати тест»</strong>, щоб
+          <p style="color:var(--text-muted); margin:0;">Оберіть тему та натисніть <strong>«🚀 Старт»</strong>, щоб
             перевірити знання строків, форм, рівнів ризику та процедур Банку.</p>
         </div>
       </div>
@@ -1274,7 +1520,7 @@
     <section id="tab-reference" class="tab-panel">
       <div class="grid-2">
         <div class="card">
-          <h3>Критичні строки та дедлайни</h3>
+          <h3>⏱️ Критичні строки та дедлайни</h3>
           <table>
             <thead>
               <tr>
@@ -1355,9 +1601,8 @@
         </div>
 
         <div class="card">
-          <h3>Навігатор по Додатках до СЕСМ <span
-              style="font-size:0.8rem; font-weight:400; color:var(--text-muted);">(натисніть на рядок для
-              перегляду)</span></h3>
+          <h3>📎 Навігатор по Додатках до СЕСМ <span
+              style="font-size:0.78rem; font-weight:400; color:var(--text-muted);">(натисніть для перегляду)</span></h3>
           <table>
             <thead>
               <tr>
@@ -1428,22 +1673,21 @@
     <section id="tab-ai" class="tab-panel">
       <div class="card">
         <div
-          style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px;">
           <div>
-            <h2 style="margin-bottom:4px;">ШІ-Асистент з базою всіх 3-х PDF-документів</h2>
-            <p style="margin:0; color:var(--text-muted); font-size:0.88rem;">Має доступ до Політики ESG, СЕСМ, усіх
-              Додатків (1.1–9), планів дій і навчальних матеріалів.</p>
+            <h2 style="margin-bottom:4px;">✨ ШІ-Асистент (3 PDF)</h2>
+            <p style="margin:0; color:var(--text-muted); font-size:0.86rem;">Аналізує Політику ESG, СЕСМ, Додатки (1.1–9), плани дій та тести.</p>
           </div>
-          <div style="display:flex; gap:8px;">
-            <button class="btn secondary" id="toggle-ai-settings">Налаштування API</button>
-            <button class="btn secondary" id="clear-ai-chat">Очистити чат</button>
+          <div style="display:flex; gap:8px; flex-shrink:0;">
+            <button class="btn secondary" id="toggle-ai-settings" title="Налаштування API">⚙️<span class="btn-label"> Налаштування</span></button>
+            <button class="btn secondary" id="clear-ai-chat" title="Очистити чат">🗑️<span class="btn-label"> Очистити</span></button>
           </div>
         </div>
 
         <div id="ai-file-warning" class="ai-notice" style="display:none;">
           <strong>Для роботи ШІ-чату з файлу (або на iOS):</strong> вставте URL вашого <strong>Cloudflare
             Worker</strong> у поле «Проксі / Endpoint URL» нижче, або запустіть на ПК
-          <code>start_ai_assistant.bat</code>. Усі інші 4 вкладки працюють повністю офлайн!
+          <code>start_ai_assistant.bat</code>. Усі інші вкладки працюють повністю офлайн!
         </div>
 
         <div id="ai-settings-panel" class="ai-settings" style="display:none;">
@@ -1463,28 +1707,23 @@
 
         <div class="tag-row" id="ai-quick-prompts">
           <button class="tag-btn"
-            data-prompt="Перевір клієнта: фермерське господарство хоче кредит на купівлю трактора та добрив (5 млн грн, 300 га, є склад пального). Які кроки ESDD і що перевірити?">Кейс:
-            Агро + паливо</button>
+            data-prompt="Перевір клієнта: фермерське господарство хоче кредит на купівлю трактора та добрив (5 млн грн, 300 га, є склад пального). Які кроки ESDD і що перевірити?">🚜 Агро + паливо</button>
           <button class="tag-btn"
-            data-prompt="У позичальника на складі стався розлив дизпалива та травмувався працівник (лікарняний 5 днів). Який мій покроковий план дій та точні дедлайни?">Кейс:
-            Інцидент + травма</button>
+            data-prompt="У позичальника на складі стався розлив дизпалива та травмувався працівник (лікарняний 5 днів). Який мій покроковий план дій та точні дедлайни?">🚨 Інцидент + травма</button>
           <button class="tag-btn"
-            data-prompt="На пошту Ecology@poltavabank.com надійшла анонімна скарга про домагання з боку керівника підрозділу на підприємстві-позичальнику. Що мені робити?">Кейс:
-            Чутлива скарга</button>
+            data-prompt="На пошту Ecology@poltavabank.com надійшла анонімна скарга про домагання з боку керівника підрозділу на підприємстві-позичальнику. Що мені робити?">🔒 Чутлива скарга</button>
           <button class="tag-btn"
-            data-prompt="Яка різниця між Списком виключень НУР і Списком виключень Полтава-банку?">Різниця списків
-            виключень</button>
+            data-prompt="Яка різниця між Списком виключень НУР і Списком виключень Полтава-банку?">⚖️ Списки виключень</button>
           <button class="tag-btn"
-            data-prompt="Склади приклад заповненої таблиці ПДЕСА (Частина D) для підприємства, у якого немає дозволу на викиди та відсутній план реагування на НС.">Шаблон
-            ПДЕСА</button>
+            data-prompt="Склади приклад заповненої таблиці ПДЕСА (Частина D) для підприємства, у якого немає дозволу на викиди та відсутній план реагування на НС.">📋 Шаблон ПДЕСА</button>
         </div>
 
         <div class="ai-chat-box" id="ai-chat-box"></div>
 
         <div class="ai-input-row">
-          <textarea id="ai-input"
-            placeholder="Задайте будь-яке питання щодо документів, оцінки клієнта, ПДЕСА, скарг, інцидентів або тестів... (Enter — надіслати, Shift+Enter — новий рядок)"></textarea>
-          <button class="btn" id="ai-send">Надіслати</button>
+          <textarea id="ai-input" rows="1"
+            placeholder="Запитайте про документи, оцінку клієнта, ПДЕСА, скарги чи тести..."></textarea>
+          <button class="btn" id="ai-send" title="Надіслати">⬆️<span class="btn-label"> Надіслати</span></button>
         </div>
       </div>
     </section>
@@ -1492,38 +1731,36 @@
     <!-- TAB 6: DOCUMENTS LIBRARY -->
     <section id="tab-docs" class="tab-panel">
       <div class="card">
-        <h2>Повний текст усіх 3-х PDF (97 сторінок)</h2>
-        <p style="margin-top:0; color:var(--text-muted); font-size:0.9rem;">Повний посторінковий текст усіх трьох
-          документів з пошуком та підсвіткою жовтим маркером.</p>
+        <h2>📚 Повний текст усіх 3-х PDF (97 сторінок)</h2>
+        <p style="margin-top:0; color:var(--text-muted); font-size:0.88rem;">Посторінковий перегляд із пошуком та розумним жовтим маркером.</p>
         <div class="full-pdf-grid">
           <button class="full-pdf-btn" type="button" onclick="openFullPdfViewer('policy', '', 1)">
-            <strong>📄 Політика управління ESG ризиками</strong>
-            <span>16 сторінок • Повний текст</span>
+            <strong>🏛️ Політика управління ESG ризиками</strong>
+            <span>16 сторінок • Відкрити PDF →</span>
           </button>
           <button class="full-pdf-btn" type="button" onclick="openFullPdfViewer('sesm', '', 1)">
-            <strong>📄 СЕСМ АТ «Полтава-банк»</strong>
-            <span>14 сторінок • Повний текст</span>
+            <strong>🛡️ СЕСМ АТ «Полтава-банк»</strong>
+            <span>14 сторінок • Відкрити PDF →</span>
           </button>
           <button class="full-pdf-btn" type="button" onclick="openFullPdfViewer('appendices', '', 1)">
-            <strong>📄 Додатки до СЕСМ (1.1–9)</strong>
-            <span>67 сторінок • Повний текст</span>
+            <strong>📎 Додатки до СЕСМ (1.1–9)</strong>
+            <span>67 сторінок • Відкрити PDF →</span>
           </button>
         </div>
       </div>
       <div class="card">
-        <h2>Структурований довідник і пошук по документах</h2>
-        <p style="margin-top:0; color:var(--text-muted); font-size:0.9rem;">Швидкий зміст Політики ESG, СЕСМ та всіх
-          Додатків (1.1–9). Пошук нижче шукає також по всіх 97 сторінках PDF.</p>
+        <h2>🔍 Довідник і пошук по документах</h2>
+        <p style="margin-top:0; color:var(--text-muted); font-size:0.88rem;">Швидкий зміст Політики ESG, СЕСМ та всіх Додатків (1.1–9) + пошук по 97 сторінках.</p>
         <div class="search-bar">
           <input type="text" id="doc-search" class="search-input"
-            placeholder="Пошук по документах: наприклад, 300 метрів, таблиця 1, виключення, ОВД, скарга, Смарагдова..." />
-          <button class="btn secondary" id="clear-doc-search">Скинути</button>
+            placeholder="Пошук: 300 метрів, таблиця 1, виключення, ОВД, скарга..." />
+          <button class="btn secondary" id="clear-doc-search" title="Скинути">🧹<span class="btn-label"> Скинути</span></button>
         </div>
         <div class="tag-row" id="doc-filter-tags">
-          <button class="tag-btn active" data-docsrc="Усі">Усі документи</button>
-          <button class="tag-btn" data-docsrc="Політика ESG">Політика ESG</button>
-          <button class="tag-btn" data-docsrc="СЕСМ">СЕСМ</button>
-          <button class="tag-btn" data-docsrc="Додатки до СЕСМ">Додатки (1.1–9)</button>
+          <button class="tag-btn active" data-docsrc="Усі">📚 Усі</button>
+          <button class="tag-btn" data-docsrc="Політика ESG">🏛️ Політика ESG</button>
+          <button class="tag-btn" data-docsrc="СЕСМ">🛡️ СЕСМ</button>
+          <button class="tag-btn" data-docsrc="Додатки до СЕСМ">📎 Додатки (1.1–9)</button>
         </div>
       </div>
       <div id="docs-grid" class="grid-2"></div>
@@ -1588,34 +1825,6 @@
     - Помірний: Форма ESDD + ПДЕСА (Частина D). Вимоги та ПДЕСА включаються до Угоди.
     - Суттєвий або Високий: Звіт за результатами ESDD + ПДЕСА (+ ТЗ та контракт зовнішнього консультанта за Додатком 6). ПДЕСА включається до Угоди. Додатково можуть вимагатися інструменти (Таблиця 2): ESIA, SIA, ESMP, ПЗЗС (План залучення зацікавлених сторін), ПП (План переселення), ПУ (якість повітря, біорізноманіття, трудові ресурси, небезпечні матеріали, шум/вібрації).
   * Крок 3: Ухвалення рішення колегіальним органом.
-  * Крок 4: Включення ESG-зобов'язань та ПДЕСА до кредитної угоди.
-  * Крок 5: Періодичний моніторинг і звітність (Кожен звіт подається не пізніше 30 робочих днів після закінчення звітного періоду).
-- Інциденти (п. 6.4–6.5):
-  * Повідомлення від позичальника до Банку: не пізніше 24 годин.
-  * Повідомлення від Банку до НУР (об'єкти МФО): не пізніше 24 годин (Форма — Додаток 4).
-  * Детальна Форма розслідування (Додаток 5): подається Банком до НУР не пізніше 30 календарних днів з дати інциденту.
-  * Аналіз першопричин: подається до НУР не пізніше 15 календарних днів після запиту НУР.
-- Управління невідповідностями та змінами (п. 6.6): оновлення ПДЕСА, допомога бенефіціару, перевірка документів/виїзди, Форма повідомлення про зміну та аналіз (Додаток 9).
-- Навчання (Розділ 8, Таблиця 5): Компонент 1 (НУР/консультанти навчають Банк), Компонент 2 (Банк/консультанти навчають бенефіціарів після підписання угоди), Компонент 3 (вступні тренінги для нового персоналу + щорічні повторні тренінги + е-курс Світового банку).
-- Розкриття інформації (Розділ 9): публікація на сайті узагальненої СЕСМ, Політики ESG, програм підтримки ММСП, критеріїв прийнятності, контактів та каналів подання скарг.
-- Механізм розгляду та врегулювання скарг (МРВС, Розділ 10, Таблиця 6):
-  * Канали: пошта (36000, м. Полтава, вул. Пилипа Орлика, 40-а, УРМ), e-mail Ecology@poltavabank.com, розділ сайту «Скарги та пропозиції» (тема «Повідомлення щодо ESG-питань»). Анонімні скарги розслідуються, але заявник має сам ініціювати контакт для отримання відповіді.
-  * Закриття: консультації та отримання письмової згоди скаржника; якщо згоди немає — повідомлення про право на інші засоби правового захисту.
-  * Чутливі скарги (п. 10.8): ГЗН/СЕН/СД, шахрайство/корупція, порушення кодексу поведінки. Фахівець повідомляє Правління; розслідування проводять щонайменше 2 члени Правління (зацікавлений член відсторонюється); для МФО — інформування та консультації з координатором із соціальних питань НУР.
-
-=== ДОКУМЕНТ 3: ДОДАТКИ ДО СЕСМ АТ «ПОЛТАВА-БАНК» ===
-- Додаток 1.1 / А1 (Список виключень НУР): 1) незаконна діяльність; 2) заборонені/ліквідовані хімікати, пестициди, ПХБ, озоноруйнівні речовини, CITES, незаконна торгівля відходами; 3) зброя та боєприпаси; 4) алкоголь (крім пива та вина); 5) тютюн; 6) азартні ігри/казино; 7) радіоактивні матеріали (окрім медобладнання/контролю якості); 8) незв'язаний азбест (допускаються листи <20%); 9) деструктивне рибальство/сітки >2,5 км; 10) примусова/шкідлива дитяча праця; 11) лісозаготівля в тропічних пралісах; 12) деревина без сталого лісокористування; 13) значні обсяги небезпечних хімікатів (бензин, керосин, нафтопродукти — для мікрофінансування); 14) знищення/погіршення територій під особливою охороною; 15) АЕС та уранові шахти; 16) вугілля (видобуток, вугільні ТЕС/ТЕЦ); 17) нетрадиційна нафта з бітумінозних сланців/пісків; 18) якісні умови для великих гребель (>15 м або 5-15 м з водосховищем >3 млн м3) та нетрадиційного газу. RISE PforR: заборонені проєкти з «високим» ризиком.
-- Додаток 1.2 / А2 (Список виключень Банку): 1) діяльність, заборонена законодавством/міжнародними актами; 2) примусова/шкідлива дитяча праця.
-- Додаток 2 (Форма ESDD):
-  * Частина A (A.1–A.15): реквізити, КВЕД, опис діяльності, кадастрові номери та координати ділянок, право користування землею, кількість працівників (з розбивкою за статтю), постачальники, сума/ціль кредиту, перелік дозволів і ліцензій.
-  * Частина B (B.1–B.12 + зобов'язання): Декларація. Якщо «Ні» на B.1–B.7 -> відмова. Якщо «Ні» тільки на B.8–B.12 та/або інвестиційна/змішана мета -> заповнити C1/C2. Якщо всі «Так» і тільки обіговий капітал -> Низький ризик, перехід до E. Зобов'язання клієнта: інформувати про серйозні інциденти за 24 год (звіт за 30 днів), про інші істотні зміни за 10 роб. днів, щорічна звітність.
-  * Частина C1 (C.1–C.19, обіговий капітал): політики ESG, відповідальні особи, підрядники, порушення за 10 років, кадрова політика, ОПБЖ (травматизм за 3 роки), споживання ресурсів, викиди/відходи, резервуари пального (вторинна ізоляція), громади, СЗЗ, озброєна охорона, стихійні лиха, інфекції, дорожній рух, 300 м до охоронюваних територій/Смарагдової мережі, скарги громад, воєнні ризики (C.19).
-  * Частина C2 (C.20–C.56, інвестиції): дозволи, нове будівництво/розширення, реконструкція, кар'єри, вразливі групи, план НС, робоча сила, ризики ОПБЖ, дитяча/примусова праця, ресурси, викиди/відходи, азбест, хімікати, паливо, СЗЗ, озброєна охорона, приплив працівників, права людини/ГЗН, школи/лікарні/церкви, стихійні лиха, придбання землі/переселення (C.41–C.44, примусове вилучення за останні 5 років заборонене), біорізноманіття (C.45–C.49), культурна спадщина (C.50–C.51), залучення сторін і скарги (C.52–C.54, C.56), воєнні ризики (C.55).
-  * Виїзд на місце (с. 18): дата, ПІБ, спостереження, додаткові заходи до ПДЕСА, мінімум 3 фото з описом.
-  * Частина D (ПДЕСА): таблиця коригувальних дій, підстав, строків, статусів.
-  * Частина E (Результат ESDD): E.1 Категорія ризику, E.2 Підсумок, E.3 Документація, E.4 Рішення/Рекомендація.
-- Додаток Б: перелік 26 видів діяльності з високим та суттєвим ризиком (наприклад: пташники >85 тис. бройлерів / >60 тис. курей, свиноферми >3000 місць / >900 свиноматок, великі дамби, трубопроводи >800 мм і >40 км, кар'єри >25 га, хімзаводи, виплавка металів, вплив на чутливі об'єкти чи переселення).
-- Додаток 3: критерії класифікації Високого, Суттєвого, Помірного, Низького ризиків.
 - Додаток 4: Шаблон повідомлення про інцидент (24 год), перелік типів інцидентів та їх визначення (смертельний випадок протягом 1 року, тимчасова втрата працездатності ≥3 днів, забруднення >24 год, бойові дії/обстріли тощо).
 - Додаток 5: Зразок форми розслідування інциденту (30 днів), причини травмування, компенсації, перелік супровідних документів.
 - Додаток 6: Шаблон ТЗ на консультаційні послуги з ESDD та ЕСО (для Суттєвого/Високого ризику), Додаток A (Анкета ESDD для Суттєвого/Високого ризику), Додаток B (Зведена таблиця дотримання ЕСС), Додаток (II) (Шаблон ПДЕСА).
@@ -2692,11 +2901,31 @@
       return terms.slice(0, 8);
     }
 
-    function highlightPdfText(rawText, query) {
+    function highlightPdfText(rawText, query, aiPhrases = null) {
       let html = (rawText || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      const terms = getSearchTerms(query);
+      if (Array.isArray(aiPhrases) && aiPhrases.length) {
+        const cleanPhrases = aiPhrases
+          .map(p => (p || "").trim())
+          .filter(p => p.length >= 6)
+          .sort((a, b) => b.length - a.length);
+        if (cleanPhrases.length) {
+          const phraseRegexes = cleanPhrases.map(p => {
+            const escaped = escapeRegExp(p.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            return escaped.replace(/\\?\s+/g, "\\s+");
+          });
+          const pat = new RegExp("(" + phraseRegexes.join("|") + ")", "gi");
+          return html.replace(pat, '<mark class="pdf-highlight">$1</mark>');
+        }
+      }
+      const q = (query || "").trim();
+      if (!q) return html;
+      const terms = getSearchTerms(q).filter(t => t.length >= 4 || t.toLowerCase() === q.toLowerCase());
       if (!terms.length) return html;
-      const pattern = new RegExp("(" + terms.map(escapeRegExp).join("|") + ")", "gi");
+      const wordSafe = terms.map(t => {
+        const esc = escapeRegExp(t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+        return `(?<![а-яіїєґА-ЯІЇЄҐa-zA-Z0-9])${esc}(?![а-яіїєґА-ЯІЇЄҐa-zA-Z0-9])`;
+      });
+      const pattern = new RegExp("(" + wordSafe.join("|") + ")", "gi");
       return html.replace(pattern, '<mark class="pdf-highlight">$1</mark>');
     }
 
@@ -2727,7 +2956,7 @@
       return bestScore > 0 ? best : (pool[0] || FULL_PDF_PAGES[0]);
     }
 
-    function formatPdfPageHtml(rawText, query) {
+    function formatPdfPageHtml(rawText, query, aiPhrases = null) {
       const lines = (rawText || "").split("\n").map(l => l.trim()).filter(Boolean);
       let out = [];
       let inList = false;
@@ -2740,30 +2969,77 @@
         if (/^[•\-–]\s+/.test(line)) {
           if (!inList) { out.push('<ul class="pdf-list">'); inList = true; }
           const itemText = line.replace(/^[•\-–]\s+/, "");
-          out.push(`<li>${highlightPdfText(itemText, query)}</li>`);
+          out.push(`<li>${highlightPdfText(itemText, query, aiPhrases)}</li>`);
           continue;
         }
         closeList();
 
-        if (/^(Розділ|Додаток|Таблиця|Частина)\s+/i.test(line) || (/^\d+\.\s+[А-ЯІЇЄҐ]/.test(line) && line.length < 130)) {
-          out.push(`<div class="pdf-heading">${highlightPdfText(line, query)}</div>`);
+        if ((/^(Розділ|Додаток|Таблиця|Частина)\s+/i.test(line) || /^\d+\.\s+[А-ЯІЇЄҐ]/.test(line)) && line.length < 130) {
+          out.push(`<div class="pdf-heading">${highlightPdfText(line, query, aiPhrases)}</div>`);
           continue;
         }
 
         const clauseMatch = line.match(/^((?:\d+\.)+\d*\.?|\d+\)|[а-яіїєґ]\))\s+(.*)$/);
         if (clauseMatch) {
-          out.push(`<div class="pdf-clause"><span class="pdf-clause-num">${clauseMatch[1]}</span>${highlightPdfText(clauseMatch[2], query)}</div>`);
+          out.push(`<div class="pdf-clause"><span class="pdf-clause-num">${clauseMatch[1]}</span>${highlightPdfText(clauseMatch[2], query, aiPhrases)}</div>`);
           continue;
         }
 
-        out.push(`<p class="pdf-para">${highlightPdfText(line, query)}</p>`);
+        out.push(`<p class="pdf-para">${highlightPdfText(line, query, aiPhrases)}</p>`);
       }
       closeList();
 
       return `<div class="pdf-page-formatted">${out.join("")}</div>`;
     }
 
-    function openFullPdfViewer(docId, query = "", targetPage = null, showAll = false) {
+    const aiPdfHighlightCache = {};
+    async function fetchAiPdfQuotes(pageObj, topicContext) {
+      const cacheKey = `${pageObj.docId}_${pageObj.page}_${topicContext.slice(0, 80)}`;
+      if (aiPdfHighlightCache[cacheKey]) return aiPdfHighlightCache[cacheKey];
+
+      const ep = (document.getElementById("ai-endpoint")?.value || "").trim() || "https://pb-esg-proxy.virbogdan.workers.dev/";
+      const apiKey = (document.getElementById("ai-api-key")?.value || "").trim();
+      const model = (document.getElementById("ai-model")?.value || "").trim() || "gemini-3.5-flash-lite";
+      if (!ep.startsWith("http")) return null;
+
+      try {
+        const resp = await fetch(ep, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            apiKey,
+            model,
+            temperature: 0.1,
+            max_tokens: 350,
+            messages: [
+              {
+                role: "system",
+                content: "Ти — точний аналізатор документів. Поверни ЛИШЕ валідний JSON-масив із 1–3 коротких точних цитат (дослівних фрагментів тексту, по 4–18 слів кожна) зі сторінки документа, які безпосередньо відповідають на тему/питання. Без пояснень, без markdown-обгорток, лише JSON-масив рядків."
+              },
+              {
+                role: "user",
+                content: `Тема/питання: ${topicContext}\n\nТекст сторінки:\n${pageObj.text.slice(0, 3500)}`
+              }
+            ]
+          })
+        });
+        const data = await resp.json();
+        const raw = (data.choices?.[0]?.message?.content || "").trim();
+        const jsonMatch = raw.match(/\[[\s\S]*\]/);
+        if (!jsonMatch) return null;
+        const arr = JSON.parse(jsonMatch[0]);
+        if (Array.isArray(arr) && arr.length) {
+          const clean = arr.map(s => String(s).trim()).filter(s => s.length >= 6);
+          if (clean.length) {
+            aiPdfHighlightCache[cacheKey] = clean;
+            return clean;
+          }
+        }
+      } catch (_) {}
+      return null;
+    }
+
+    function openFullPdfViewer(docId, query = "", targetPage = null, showAll = false, aiTopicContext = "") {
       const pages = (FULL_PDF_PAGES || []).filter(p => !docId || p.docId === docId);
       if (!pages.length) return;
 
@@ -2789,17 +3065,20 @@
       const safeQueryAttr = (query || "").replace(/"/g, "&quot;");
       modalBody.innerHTML = `
     <div class="pdf-viewer-toolbar">
-      <button class="btn secondary" id="pdf-prev-btn" type="button" ${currentIdx <= 0 || showAll ? "disabled" : ""}>◀ Попередня</button>
+      <button class="btn secondary" id="pdf-prev-btn" type="button" title="Попередня сторінка" ${currentIdx <= 0 || showAll ? "disabled" : ""}>◀<span class="btn-label"> Попередня</span></button>
       <select id="pdf-page-select" class="select-input" style="min-height:38px; padding:6px 10px;">${pageOptions}</select>
-      <button class="btn secondary" id="pdf-next-btn" type="button" ${currentIdx >= pages.length - 1 || showAll ? "disabled" : ""}>Наступна ▶</button>
+      <button class="btn secondary" id="pdf-next-btn" type="button" title="Наступна сторінка" ${currentIdx >= pages.length - 1 || showAll ? "disabled" : ""}><span class="btn-label">Наступна </span>▶</button>
       <input type="text" id="pdf-modal-search" class="search-input" style="min-width:170px; min-height:38px; padding:6px 10px; font-size:0.88rem;" value="${safeQueryAttr}" placeholder="Підсвітити маркером..." />
-      <button class="btn secondary" id="pdf-toggle-all" type="button">${showAll ? "Лише 1 сторінка" : "Усі сторінки"}</button>
+      <button class="btn secondary" id="pdf-toggle-all" type="button" title="Перемкнути режим сторінок">${showAll ? "📄<span class=\"btn-label\"> Лише 1 сторінка</span>" : "📑<span class=\"btn-label\"> Усі сторінки</span>"}</button>
     </div>
     <div id="pdf-pages-container">
       ${pagesToRender.map(p => `
         <div class="pdf-page-card" id="pdf-page-${p.page}">
-          <span class="pdf-page-badge">${p.docName} • Сторінка ${p.page} з ${pages.length}</span>
-          ${formatPdfPageHtml(p.text, query)}
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-bottom:8px;">
+            <span class="pdf-page-badge" style="margin-bottom:0;">${p.docName} • Сторінка ${p.page} з ${pages.length}</span>
+            ${aiTopicContext && !showAll ? `<span id="pdf-ai-status" style="font-size:0.76rem; color:var(--primary); font-weight:600;">✨ ШІ підбирає точні речення...</span>` : ""}
+          </div>
+          <div class="pdf-page-content">${formatPdfPageHtml(p.text, aiTopicContext ? "" : query)}</div>
         </div>
       `).join("")}
     </div>
@@ -2826,14 +3105,33 @@
       });
 
       document.getElementById("doc-modal").classList.add("open");
-      setTimeout(() => {
+      const scrollToHighlight = () => {
         const firstMark = modalBody.querySelector("mark.pdf-highlight");
         if (firstMark) {
           firstMark.scrollIntoView({ behavior: "smooth", block: "center" });
         } else {
           modalBody.scrollTop = 0;
         }
-      }, 60);
+      };
+      setTimeout(scrollToHighlight, 60);
+
+      if (aiTopicContext && !showAll && pagesToRender.length === 1) {
+        const targetObj = pagesToRender[0];
+        fetchAiPdfQuotes(targetObj, aiTopicContext).then(quotes => {
+          const contentEl = document.querySelector(`#pdf-page-${targetObj.page} .pdf-page-content`);
+          const statusEl = document.getElementById("pdf-ai-status");
+          if (!contentEl) return;
+          if (quotes && quotes.length) {
+            contentEl.innerHTML = formatPdfPageHtml(targetObj.text, "", quotes);
+            if (statusEl) statusEl.textContent = "✨ ШІ виділив потрібне";
+            setTimeout(scrollToHighlight, 40);
+          } else {
+            contentEl.innerHTML = formatPdfPageHtml(targetObj.text, query);
+            if (statusEl) statusEl.remove();
+            setTimeout(scrollToHighlight, 40);
+          }
+        });
+      }
     }
 
     function closeDocModal() {
@@ -3178,14 +3476,35 @@
       const isRight = selectedIdx === item.correct;
       if (isRight) score++;
 
+      let prefDoc = "";
+      if (/Додат(ок|ку|ка|ки)/i.test(item.exp)) prefDoc = "appendices";
+      else if (/Політик/i.test(item.exp)) prefDoc = "policy";
+      else if (/СЕСМ/i.test(item.exp)) prefDoc = "sesm";
+
+      const pdfMatch = findBestPdfMatch(`${item.exp} ${item.q}`, prefDoc);
+      const stopWords = /^(згідно|пункту|додатка|додатку|таблиці|банк|банку|повинен|мають|якщо|після|через|щодо|який|яких|такі|лише)$/i;
+      const pdfQuery = getSearchTerms(item.exp).filter(w => !stopWords.test(w)).slice(0, 4).join(" ");
+
       document.getElementById("quiz-feedback").innerHTML = `
     <div class="explanation">
-      <strong>${isRight ? "✅ Правильно!" : "❌ Неправильно."}</strong> ${item.exp}
+      <div><strong>${isRight ? "✅ Правильно!" : "❌ Неправильно."}</strong> ${item.exp}</div>
+      ${pdfMatch ? `
+        <div class="ai-pdf-actions" style="margin-top:10px; padding-top:10px;">
+          <button class="pdf-jump-btn" id="quiz-open-pdf" type="button">📄 Перегляд у PDF: ${pdfMatch.docName} (стор. ${pdfMatch.page})</button>
+        </div>
+      ` : ""}
     </div>
     <div style="margin-top:14px;">
       <button class="btn" id="next-q">${currentIdx + 1 < currentQuiz.length ? "Наступне питання →" : "Завершити тест"}</button>
     </div>
   `;
+
+      const quizPdfBtn = document.getElementById("quiz-open-pdf");
+      if (quizPdfBtn && pdfMatch) {
+        quizPdfBtn.addEventListener("click", () => {
+          openFullPdfViewer(pdfMatch.docId, pdfQuery, pdfMatch.page, false, `${item.q} ${item.exp}`);
+        });
+      }
 
       document.getElementById("next-q").addEventListener("click", () => {
         currentIdx++;
@@ -3438,7 +3757,7 @@
           btn.type = "button";
           btn.className = "pdf-jump-btn";
           btn.textContent = `📄 Перегляд у PDF: ${r.label}`;
-          btn.addEventListener("click", () => openFullPdfViewer(r.docId, r.query));
+          btn.addEventListener("click", () => openFullPdfViewer(r.docId, r.query, null, false, `${userQuestion} ${r.query}`));
           actionsDiv.appendChild(btn);
         });
         blocks.push(actionsDiv);
@@ -3594,7 +3913,9 @@ ${playbooksSummary}`;
       const isDark = theme === "dark";
       document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
       if (themeToggleBtn) {
-        themeToggleBtn.textContent = isDark ? "☀️ Світла тема" : "🌙 Темна тема";
+        themeToggleBtn.innerHTML = isDark
+          ? '☀️<span class="btn-label"> Світла тема</span>'
+          : '🌙<span class="btn-label"> Темна тема</span>';
       }
     }
     applyTheme(localStorage.getItem(THEME_STORAGE) || "dark");
